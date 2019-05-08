@@ -1,0 +1,19 @@
+{
+  "name": "cc-commons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "validators.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloudcord/cc-commons.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cloudcord/cc-commons/issues"
+  },
+  "homepage": "https://github.com/cloudcord/cc-commons#readme"
+}
