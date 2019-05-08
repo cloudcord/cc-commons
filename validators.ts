@@ -13,6 +13,11 @@ export const isValidPlan = (plan: Plan): boolean => (
   typeof plan === 'string' && Object.values(Plan).includes(plan)
 )
 
+/**
+ * Checks if the prefix a user wants a bot to take matches with our guards
+ * @param plan Plan of user
+ * @param prefix Prefix user wants the bot to take
+ */
 export const prefixAllowed = (plan: Plan, prefix: string): PrefixAllowedResponse => {
   if (!isValidPlan(plan)) return { allowed: false, error: "Plan is not valid" };
   if (prefix.length > 12) return { allowed: false, error: "Prefix too long" };
