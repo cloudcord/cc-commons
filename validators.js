@@ -7,6 +7,11 @@ var Plan;
 })(Plan || (Plan = {}));
 exports.BASIC_ALLOWED_PREFIXES = ['.', '!', '?', '-', '+', '*', '/'];
 exports.isValidPlan = function (plan) { return (typeof plan === 'string' && Object.values(Plan).includes(plan)); };
+/**
+ * Checks if the prefix a user wants a bot to take matches with our guards
+ * @param plan Plan of user
+ * @param prefix Prefix user wants the bot to take
+ */
 exports.prefixAllowed = function (plan, prefix) {
     if (!exports.isValidPlan(plan))
         return { allowed: false, error: "Plan is not valid" };
