@@ -1,4 +1,4 @@
-enum Plan {
+export enum Plan {
   BASIC = 'basic',
   PRO = 'pro'
 }

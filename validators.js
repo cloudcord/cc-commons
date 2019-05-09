@@ -4,7 +4,7 @@ var Plan;
 (function (Plan) {
     Plan["BASIC"] = "basic";
     Plan["PRO"] = "pro";
-})(Plan || (Plan = {}));
+})(Plan = exports.Plan || (exports.Plan = {}));
 exports.BASIC_ALLOWED_PREFIXES = ['.', '!', '?', '-', '+', '*', '/'];
 exports.isValidPlan = function (plan) { return (typeof plan === 'string' && Object.values(Plan).includes(plan)); };
 /**
