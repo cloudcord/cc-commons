@@ -2,7 +2,7 @@
   "name": "cc-commons",
   "version": "1.0.0",
   "description": "",
-  "main": "validators.js",
+  "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

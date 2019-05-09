@@ -1,12 +1,10 @@
-export enum Plan {
-  BASIC = 'basic',
-  PRO = 'pro'
-}
+import { Plan } from "./definitions/cc_bot";
 
 type PrefixAllowedResponse = {
   allowed: boolean,
   error?: string
 }
+
 export const BASIC_ALLOWED_PREFIXES = ['.', '!', '?', '-', '+', '*', '/'];
 
 export const isValidPlan = (plan: Plan): boolean => (
