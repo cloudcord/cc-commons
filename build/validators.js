@@ -1,12 +1,8 @@
 "use strict";
 exports.__esModule = true;
-var Plan;
-(function (Plan) {
-    Plan["BASIC"] = "basic";
-    Plan["PRO"] = "pro";
-})(Plan = exports.Plan || (exports.Plan = {}));
+var cc_bot_1 = require("./definitions/cc_bot");
 exports.BASIC_ALLOWED_PREFIXES = ['.', '!', '?', '-', '+', '*', '/'];
-exports.isValidPlan = function (plan) { return (typeof plan === 'string' && Object.values(Plan).includes(plan)); };
+exports.isValidPlan = function (plan) { return (typeof plan === 'string' && Object.values(cc_bot_1.Plan).includes(plan)); };
 /**
  * Checks if the prefix a user wants a bot to take matches with our guards
  * @param plan Plan of user
@@ -17,7 +13,7 @@ exports.prefixAllowed = function (plan, prefix) {
         return { allowed: false, error: "Plan is not valid" };
     if (prefix.length > 12)
         return { allowed: false, error: "Prefix too long" };
-    if (plan !== Plan.BASIC)
+    if (plan !== cc_bot_1.Plan.BASIC)
         return { allowed: true };
     if (exports.BASIC_ALLOWED_PREFIXES.includes(prefix))
         return { allowed: true };
