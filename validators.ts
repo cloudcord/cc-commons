@@ -46,7 +46,7 @@ const validateModuleKeys = (omf: CloudCordModule, o: ModuleConfig, m: ModuleConf
   if(mRoot.filter((i) => {return MODULE_ROOT_KEYS.indexOf(i) < 0;}).length > 0) return false;
 
   // Makes sure the user hasn't disabled any commands which aren't part of the module
-  if(m.disabled_commands) if(Object.keys(m.disabled_commands).filter(i => {return !oCmds.includes(i)}).length > 0) return false;
+  if(m.disabled_commands) if(m.disabled_commands.filter(i => {return !oCmds.includes(i)}).length > 0) return false;
 
   // Makes sure user hasn't tried to set permissions of any commands that aren't part of the module
   if(m.command_permissions) if(Object.keys(m.command_permissions).filter(i => {return !oCmds.includes(i)}).length > 0) return false;

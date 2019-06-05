@@ -29,7 +29,7 @@ var validateModuleKeys = function (omf, o, m) {
         return false;
     // Makes sure the user hasn't disabled any commands which aren't part of the module
     if (m.disabled_commands)
-        if (Object.keys(m.disabled_commands).filter(function (i) { return !oCmds.includes(i); }).length > 0)
+        if (m.disabled_commands.filter(function (i) { return !oCmds.includes(i); }).length > 0)
             return false;
     // Makes sure user hasn't tried to set permissions of any commands that aren't part of the module
     if (m.command_permissions)
