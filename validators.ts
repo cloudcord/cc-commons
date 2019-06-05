@@ -52,7 +52,7 @@ const validateModuleKeys = (omf: CloudCordModule, o: ModuleConfig, m: ModuleConf
   if(m.command_permissions) if(Object.keys(m.command_permissions).filter(i => {return !oCmds.includes(i)}).length > 0) return false;
 
   // Makes sure command permissions conform to correct structure
-  if(m.disabled_commands) if(!Object.keys(m.command_permissions).every(i => {
+  if(m.command_permissions) if(!Object.keys(m.command_permissions).every(i => {
     const permission = m.command_permissions[i];
     if(!permission) return false;
     if(!PERMISSION_TYPES.includes(permission.type)) return false;
