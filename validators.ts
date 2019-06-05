@@ -46,17 +46,17 @@ const validateModuleKeys = (omf: CloudCordModule, o: ModuleConfig, m: ModuleConf
   if(mRoot.filter((i) => {return MODULE_ROOT_KEYS.indexOf(i) < 0;}).length > 0) return false;
 
   // Makes sure the user hasn't disabled any commands which aren't part of the module
-  if(Object.keys(m.disabled_commands).filter(i => {return !oCmds.includes(i)}).length > 0) return false;
+  if(m.disabled_commands) if(Object.keys(m.disabled_commands).filter(i => {return !oCmds.includes(i)}).length > 0) return false;
 
   // Makes sure user hasn't tried to set permissions of any commands that aren't part of the module
-  if(Object.keys(m.command_permissions).filter(i => {return !oCmds.includes(i)}).length > 0) return false;
+  if(m.command_permissions) if(Object.keys(m.command_permissions).filter(i => {return !oCmds.includes(i)}).length > 0) return false;
 
   // Makes sure command permissions conform to correct structure
-  if(!Object.keys(m.command_permissions).every(i => {
+  if(m.disabled_commands) if(!Object.keys(m.command_permissions).every(i => {
     const permission = m.command_permissions[i];
     if(!permission) return false;
     if(!PERMISSION_TYPES.includes(permission.type)) return false;
-
+    
     return true;
   })) return false;
 
@@ -69,6 +69,6 @@ const validateModuleKeys = (omf: CloudCordModule, o: ModuleConfig, m: ModuleConf
  */
 export const validModuleConfig = (module: CloudCordModule, originalModuleConfig: ModuleConfig,  newConfig: ModuleConfig): ModuleConfigValidatorResponse => {
   if(!validateModuleKeys(module, originalModuleConfig, newConfig)) return {"valid": false, "error": "Invalid module structure"};
-  
+
   return {"valid": true};
 }

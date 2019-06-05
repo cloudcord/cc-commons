@@ -28,21 +28,24 @@ var validateModuleKeys = function (omf, o, m) {
     if (mRoot.filter(function (i) { return exports.MODULE_ROOT_KEYS.indexOf(i) < 0; }).length > 0)
         return false;
     // Makes sure the user hasn't disabled any commands which aren't part of the module
-    if (Object.keys(m.disabled_commands).filter(function (i) { return !oCmds.includes(i); }).length > 0)
-        return false;
+    if (m.disabled_commands)
+        if (Object.keys(m.disabled_commands).filter(function (i) { return !oCmds.includes(i); }).length > 0)
+            return false;
     // Makes sure user hasn't tried to set permissions of any commands that aren't part of the module
-    if (Object.keys(m.command_permissions).filter(function (i) { return !oCmds.includes(i); }).length > 0)
-        return false;
+    if (m.command_permissions)
+        if (Object.keys(m.command_permissions).filter(function (i) { return !oCmds.includes(i); }).length > 0)
+            return false;
     // Makes sure command permissions conform to correct structure
-    if (!Object.keys(m.command_permissions).every(function (i) {
-        var permission = m.command_permissions[i];
-        if (!permission)
+    if (m.disabled_commands)
+        if (!Object.keys(m.command_permissions).every(function (i) {
+            var permission = m.command_permissions[i];
+            if (!permission)
+                return false;
+            if (!exports.PERMISSION_TYPES.includes(permission.type))
+                return false;
+            return true;
+        }))
             return false;
-        if (!exports.PERMISSION_TYPES.includes(permission.type))
-            return false;
-        return true;
-    }))
-        return false;
     // Checks passed!
     return true;
 };
