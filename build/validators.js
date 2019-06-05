@@ -36,7 +36,7 @@ var validateModuleKeys = function (omf, o, m) {
         if (Object.keys(m.command_permissions).filter(function (i) { return !oCmds.includes(i); }).length > 0)
             return false;
     // Makes sure command permissions conform to correct structure
-    if (m.disabled_commands)
+    if (m.command_permissions)
         if (!Object.keys(m.command_permissions).every(function (i) {
             var permission = m.command_permissions[i];
             if (!permission)
